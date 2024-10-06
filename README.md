@@ -51,9 +51,9 @@ Things you may want to cover:
 | name               | string     | null: false |
 | explanation        | text       | null: false |
 | category_id        | integer    | null: false |
-| state_id           | integer    | null: false |
+| condition_id       | integer    | null: false |
 | postage_id         | integer    | null: false |
-| area_id            | integer    | null: false |
+| prefecture_id      | integer    | null: false |
 | how_long_id        | integer    | null: false |
 | price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true|
@@ -78,13 +78,14 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| post_cord          | string  | null: false |
-| prefecture         | string  | null: false |
-| city               | string  | null: false |
-| address_num        | string  | null: false |
-| building           | string  |             |
-| phone_num          | integer | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| post_cord          | string     | null: false |
+| prefecture_id      | integer    | null: false |
+| city               | string     | null: false |
+| address_num        | string     | null: false |
+| building           | string     |             |
+| phone_num          | integer    | null: false |
+| order              | references | null: false, foreign_key: true |
 
 - belongs_to :order

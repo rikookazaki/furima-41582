@@ -32,7 +32,6 @@ Things you may want to cover:
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
 | email              | string | null: false, unique: true |
-| password           | string | null: false |
 | encrypted_password | string | null: false |
 | last_name          | string | null: false |
 | first_name         | string | null: false |
@@ -47,18 +46,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| image              | string  | null: false |
-| name               | string  | null: false |
-| explanation        | text    | null: false |
-| category           | string  | null: false |
-| state              | string  | null: false |
-| postage            | string  | null: false |
-| area               | string  | null: false |
-| how_long           | string  | null: false |
-| price              | integer | null: false |
-| user_id            | integer | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| name               | string     | null: false |
+| explanation        | text       | null: false |
+| category_id        | integer    | null: false |
+| state_id           | integer    | null: false |
+| postage_id         | integer    | null: false |
+| area_id            | integer    | null: false |
+| how_long_id        | integer    | null: false |
+| price              | integer    | null: false |
+| user               | references | null: false, foreign_key: true|
 
 - belongs_to :user
 - has_one :order
@@ -67,19 +65,26 @@ Things you may want to cover:
 
 ## orders テーブル
 
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+
+## addresses テーブル
+
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| card_cord          | integer | null: false |
-| card_expiry        | integer | null: false |
-| card_cvc           | integer | null: false |
 | post_cord          | string  | null: false |
 | prefecture         | string  | null: false |
 | city               | string  | null: false |
 | address_num        | string  | null: false |
 | building           | string  |             |
 | phone_num          | integer | null: false |
-| user_id            | integer | null: false |
-| item_id            | integer | null: false |
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :order

@@ -85,7 +85,7 @@ Things you may want to cover:
 | city               | string     | null: false |
 | address_num        | string     | null: false |
 | building           | string     |             |
-| phone_num          | integer    | null: false |
+| phone_num          | string     | null: false |
 | order              | references | null: false, foreign_key: true |
 
 - belongs_to :order

@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to :how_long
 
   belongs_to :user
+  has_one_attached :image
 
   validates :name, :explanation, :user,
             presence: true

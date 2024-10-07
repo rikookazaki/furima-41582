@@ -16,7 +16,6 @@ class Item < ApplicationRecord
   validates :name, :explanation, :user,
             presence: true
   validates :price, presence: true, format: { with: /\A[0-9]+\z/ }
-  validates :category_id, :condition_id, :postage_id, :prefecture_id, :how_long_id, numericality: { other_than: 1 },
-                                                                                    message: "can't be blank",
-                                                                                    presence: true
+  validates :category_id, :condition_id, :postage_id, :prefecture_id, :how_long_id, presence: true,
+                                                                                    numericality: { other_than: 1, message: "can't be blank" }
 end

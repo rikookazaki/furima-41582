@@ -132,7 +132,7 @@
         <%@item.each do |item|%>
           <%= link_to "#" do %>
           <div class='item-img-content'>
-            <%= image_tag item.image, class: "item-img" %>
+            <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
             <div class='sold-out'>
@@ -176,7 +176,7 @@
           <% end %>
         </li>
       <% end %>
-      
+
     </ul>
   </div>
   <%# /商品一覧 %>

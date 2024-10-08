@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_session, only: [:new]
   def index
+    @item = Item.all
   end
 
   def new
@@ -19,7 +20,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :explanation, :category_id, :condition_id, :postage_id, :prefecture_id, :how_lomg_id,
+    params.require(:item).permit(:image, :name, :explanation, :category_id, :condition_id, :postage_id, :prefecture_id, :how_long_id,
                                  :price).merge(user_id: current_user.id)
   end
 

@@ -1,4 +1,4 @@
-class How_long < ActiveHash::Base
+class HowLong < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: '1~2日で発送' },

@@ -17,3 +17,4 @@ function calculate(){
 };
 
 window.addEventListener('turbo:load', calculate);
+window.addEventListener('turbo:render', calculate);

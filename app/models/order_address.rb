@@ -3,9 +3,10 @@ class OrderAddress
   attr_accessor :post_cord, :prefecture_id, :city, :address_num, :building, :phone_num, :order_id, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :user_id, :item_id, :prefecture_id, :city, :address_num, :token
+    validates :user_id, :item_id, :city, :address_num, :token
     validates :post_cord, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :phone_num, format: { with: /\A\d{10,11}\z/ }
+    validates :prefecture_id, numericality: { other_than: 1 }
   end
 
   def save

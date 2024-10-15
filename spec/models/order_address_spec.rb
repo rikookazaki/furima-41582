@@ -45,6 +45,11 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Post cord is invalid')
       end
+      it 'prefectureが未選択だと購入できない' do
+        @order.prefecture_id = '1'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Prefecture must be other than 1')
+      end
       it 'cityが空だと購入できない' do
         @order.city = ''
         @order.valid?
@@ -60,8 +65,13 @@ RSpec.describe OrderAddress, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone num can't be blank")
       end
-      it 'phone_numが10桁か11桁以外だと購入できない' do
+      it 'phone_numが10桁以下だと購入できない' do
         @order.phone_num = '090111111'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone num is invalid')
+      end
+      it 'phone_numが11桁以上だと購入できない' do
+        @order.phone_num = '090111111111'
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone num is invalid')
       end
